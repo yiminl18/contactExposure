@@ -6,9 +6,18 @@ import edu.uci.ics.metadata.Metadata;
 import edu.uci.ics.metadata.SQLGenerator;
 import edu.uci.ics.model.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.util.Formatter;
 import java.util.Map;
 
 /*
@@ -16,110 +25,48 @@ import java.util.Map;
     The input is presence table.
  */
 public class Trajectory {
-    private long gapT = 10;
+    private static long gapT = 10;
+    private static Metadata metadata = new Metadata();
+    private static final String startDate = "2018-01-08 00:00:00";
+    private static final String endDate = "2018-02-10 00:00:00";
 
-    String UserLabel = "User";
-    String AffectedPersonLabel = "AffectedPerson";
-    String EventLabel = "Interval";
+    static List<String> frequentUsers = new ArrayList<>();
 
-    String ContactType = "Contact";
-    String INType = "IN";
-
-    Map<String, Boolean> isCreatedNode = new HashMap<String, Boolean>();
-
-
-    public void loadMetadata(Metadata metadata){
+    public static void loadMetadata(){
         metadata.loadIdentityMetadata();
         metadata.loadAPCoverage();
         metadata.loadSpaceMetadata();
     }
 
-    public Index loadIndex(){
-        index ID = new index();
-        Index index = new Index();
-        index = ID.readIndex();
-        return index;
-    }
-
-    public Presence getTrajectory(Query query){
-        visualization VS = new visualization();
-        VS.connect();
-        VS.clearGraph();
-        index ID = new index();
-        Index indexList = new Index();
-        indexList = loadIndex();
-        indexList.initializeAPs();
+    public static Presence getTrajectory(Query query){
         NeighborSet candidateIntervals = new NeighborSet();
         candidateIntervals.setNeighborSet(candidateIntervals.readNeighborSet());
-        VS.createPersonNode(AffectedPersonLabel, query.getUserID());
-
-        Metadata metadata = new Metadata();
-        loadMetadata(metadata);
         Presence presence = RawToPresence(query, readRawEvents(query));
         User user = new User();
         user.setUserID(query.getUserID());
         user.setVisitedAps(presence.getVisitedAPs());
-        System.out.println("Report Query: " + query.getUserID() + " From: " + query.getStartTime() + " To: " + query.getEndTime());
+        //System.out.println("Report Query: " + query.getUserID() + " From: " + query.getStartTime() + " To: " + query.getEndTime());
 
-        SQLGenerator sqlGenerator = new SQLGenerator();
+        for(int i=0;i<presence.getPresence().size();i++){
+            coarseLocalization CL = new coarseLocalization();
+            //fineLocalization FL = new fineLocalization();
 
-        Connect connectServer = new Connect("local");
-        Connection serverConnection = connectServer.get();
-        ResultSet rs;
-        try{
-            Statement stmtServer = serverConnection.createStatement();
-            for(int i=0;i<presence.getPresence().size();i++){
-                coarseLocalization CL = new coarseLocalization();
-                fineLocalization FL = new fineLocalization();
-
-                String label = CL.coarseLocalization(presence.getPresence().get(i),user);
-                presence.getPresence().get(i).setRegionLabel(label);
-                if(label.equals("out")){
-                    presence.getPresence().get(i).setRoomLabel("out");
-                }
-                else{
-                    presence.getPresence().set(i, FL.fineLocalization(presence.getPresence().get(i),metadata));
-                    //update candidate intervals
-                    UpdateCandidateIntervals(query, presence.getPresence().get(i).getNeighbors(),candidateIntervals);
-                }
-                //write to database
-                String userID = presence.getPresence().get(i).getDeviceID();
-                String startTime = presence.getPresence().get(i).getStartTimeStamp().toString();
-                String endTime = presence.getPresence().get(i).getEndTimeStamp().toString();
-                String region = presence.getPresence().get(i).getRegionLabel();
-                String room = presence.getPresence().get(i).getRoomLabel();
-                stmtServer.executeUpdate(sqlGenerator.insertAffectedPeople(userID,startTime,endTime,region,room));
-                //update index
-                int apID = indexList.findAP(region);
-                if(apID != -1){
-                    indexList.getIndex().get(apID).getIndexNodes().add(presence.getPresence().get(i));
-                    indexList.getIndex().get(apID).setDirtyBit();
-                }else{
-                    IndexNode node = new IndexNode();
-                    node.setWifiAP(region);
-                    node.addIndexNode(presence.getPresence().get(i));
-                    node.setDirtyBit();
-                    indexList.getIndex().add(node);
-                    indexList.insertAP(region);
-                }
-                VS.createEventNode(i, presence.getPresence().get(i).getStartTimeStamp().toString(),presence.getPresence().get(i).getEndTimeStamp().toString(),presence.getPresence().get(i).getRegionLabel(),presence.getPresence().get(i).getRoomLabel());
-                System.out.println(presence.getPresence().get(i).getStartTimeStamp() + " " + presence.getPresence().get(i).getEndTimeStamp() + " " + presence.getPresence().get(i).getRegionLabel() + " " +presence.getPresence().get(i).getRoomLabel());
+            String label = CL.coarseLocalization(presence.getPresence().get(i),user);
+            presence.getPresence().get(i).setRegionLabel(label);
+            /*if(label.equals("out")){
+                presence.getPresence().get(i).setRoomLabel("out");
             }
-        }catch (SQLException e) {
-            e.printStackTrace();
+            else{
+                presence.getPresence().set(i, FL.fineLocalization(presence.getPresence().get(i),metadata));
+                //update candidate intervals
+                UpdateCandidateIntervals(query, presence.getPresence().get(i).getNeighbors(),candidateIntervals);
+            }*/
+            //System.out.println(presence.getPresence().get(i).getStartTimeStamp() + " " + presence.getPresence().get(i).getEndTimeStamp() + " " + presence.getPresence().get(i).getRegionLabel());
         }
-        connectServer.close();
-
-        indexList = ID.sortIndex(indexList);
-        ID.writeToDisk(indexList);
-        candidateIntervals.writeToDisk();
-        VS.createRelationship(AffectedPersonLabel, INType, EventLabel);
-        VS.visualization();
-        VS.close();
         return presence;
     }
 
-    public void UpdateCandidateIntervals(Query query, List<String> neighbors, NeighborSet neighborSet){
+    public static void UpdateCandidateIntervals(Query query, List<String> neighbors, NeighborSet neighborSet){
         List<Integer> indents = neighborSet.findTimeInterval(Timestamp.valueOf(query.getStartTime()), Timestamp.valueOf(query.getEndTime()));
         for(int i=0;i<indents.size();i++){
             for(int j=0;j<neighbors.size();j++){
@@ -128,7 +75,7 @@ public class Trajectory {
         }
     }
 
-    public long timeOverlap(Interval a, Interval b){//return time overlap of two intervals
+    public static long timeOverlap(Interval a, Interval b){//return time overlap of two intervals
         long STa = a.getStartTimeStamp().getTime();
         long ETa = a.getEndTimeStamp().getTime();
         long STb = b.getStartTimeStamp().getTime();
@@ -150,7 +97,7 @@ public class Trajectory {
         }
     }
 
-    public rawConnectivityEvents readRawEvents(Query query){
+    public static rawConnectivityEvents readRawEvents(Query query){
         SQLGenerator sqlGenerator = new SQLGenerator();
         rawConnectivityEvents events = new rawConnectivityEvents();
 
@@ -177,7 +124,7 @@ public class Trajectory {
     }
 
 
-    public Presence RawToPresence(Query query, rawConnectivityEvents events){
+    public static Presence RawToPresence(Query query, rawConnectivityEvents events){
         Presence presence = new Presence();
         presence.setUserID(query.getUserID());
         String targetDevice = query.getUserID();
@@ -251,10 +198,62 @@ public class Trajectory {
         return presence;
     }
 
-    public void printTrajectories(Presence presence){
-        System.out.println("USER: "+ presence.getUserID());
+    public static void printTrajectories(Presence presence){
+        //System.out.println("USER: "+ presence.getUserID());
         for(int i=0;i<presence.getPresence().size();i++){
-            System.out.println(presence.getPresence().get(i).getStartTimeStamp() + " " + presence.getPresence().get(i).getEndTimeStamp() + " " + presence.getPresence().get(i).getRegionLabel());
+            System.out.println(presence.getPresence().get(i).getDeviceID() + " " +  presence.getPresence().get(i).getStartTimeStamp() + " " + presence.getPresence().get(i).getEndTimeStamp() + " " + presence.getPresence().get(i).getRegionLabel());
+        }
+    }
+
+    public static void readFrequentUsers(){
+        try {
+            BufferedReader csvReader = new BufferedReader(new FileReader("frequentUsers.csv"));
+            String row;
+            while ((row = csvReader.readLine()) != null) {
+                frequentUsers.add(row);
+            }
+            csvReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeToDisk(Presence presence){
+        //write trajectory to disk
+        try {
+            FileWriter filePath = new FileWriter("trajectories1.txt",true);
+            /*Formatter formatter = new Formatter(filePath);
+            for(int i=0;i<presence.getPresence().size();i++){
+                formatter.format("%s %s %s %s\n", presence.getPresence().get(i).getDeviceID(),presence.getPresence().get(i).getStartTimeStamp().toString(),presence.getPresence().get(i).getEndTimeStamp().toString(),presence.getPresence().get(i).getRegionLabel());
+            }*/
+            BufferedWriter bw = new BufferedWriter(filePath);
+            for(int i=0;i<presence.getPresence().size();i++){
+                String row = presence.getPresence().get(i).getDeviceID() + " " + presence.getPresence().get(i).getStartTimeStamp().toString() + " " + presence.getPresence().get(i).getEndTimeStamp().toString() + " " + presence.getPresence().get(i).getRegionLabel();
+                bw.write(row);
+                bw.newLine();
+                //System.out.println(row);
+            }
+            bw.flush();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void main(String[] args) {
+        readFrequentUsers();
+        loadMetadata();
+        for(int i=0;i<frequentUsers.size();i++){
+            Query query = new Query();
+            query.setUserID(frequentUsers.get(i));
+            query.setStartTime(startDate);
+            query.setEndTime(endDate);
+            //System.out.println(i + " " + frequentUsers.get(i));
+            /*if(frequentUsers.get(i).equals("ff6a0f3ad57af448efcc3fc79aedf5a9e78ab145")){
+                writeToDisk(getTrajectory(query));
+            }*/
+            writeToDisk(getTrajectory(query));
         }
     }
 }
