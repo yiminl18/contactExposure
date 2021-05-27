@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="neo4j-plugin-0.1.1-all">
+    <CLASSES>
+      <root url="jar:///Applications/Neo4j Desktop.app/Contents/Resources/lib/neo4j-plugin-0.1.1-all.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
