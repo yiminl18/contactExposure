@@ -72,8 +72,8 @@ public class fineLocalization {
     public Interval fineLocalization(Interval interval, Metadata metadata){
         Interval newInterval = interval;
         List<Neighbor> neighbors = findNeighbors(interval, metadata);
-        readNeighborData(neighbors, interval);
-        neighbors = filterNeighbors(neighbors, interval, metadata);
+        neighbors = readNeighborData(neighbors, interval);
+        //neighbors = filterNeighbors(neighbors, interval, metadata);
 
         List<String> candidateIntervals = new ArrayList<>();
         for(int i=0;i<neighbors.size();i++){
@@ -83,7 +83,7 @@ public class fineLocalization {
         //System.out.println("hi: " + interval.getStartTimeStamp() + " " + interval.getEndTimeStamp() + " " + interval.getRegionLabel() + " " + interval.getDeviceID());
         List<String> candidateRooms = metadata.getAPCoverage(interval.getRegionLabel());
         double value = -1.0;
-        int roomIndex = -1;
+        int roomIndex = 0;
         double sum = 0.0;
         for(int i=0;i<candidateRooms.size();i++){
             double prob = deviceAffinity(interval, neighbors, candidateRooms.get(i), metadata);
@@ -106,7 +106,7 @@ public class fineLocalization {
         List<Neighbor> neighbors = new ArrayList<>();
         SQLGenerator sqlGenerator = new SQLGenerator();
 
-        Connect connectServer = new Connect("server");
+        Connect connectServer = new Connect("server","mysql");
         Connection serverConnection = connectServer.get();
         ResultSet rs;
 
@@ -152,16 +152,18 @@ public class fineLocalization {
         return c;
     }
 
-    public void readNeighborData(List<Neighbor> neighbors, Interval interval){
+    public List<Neighbor> readNeighborData(List<Neighbor> neighbors, Interval interval){
         SQLGenerator sqlGenerator = new SQLGenerator();
         Timestamp ST = new Timestamp(interval.getStartTimeStamp().getTime() - 2*week);
         Timestamp ET = interval.getEndTimeStamp();
         String STStr = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(ST);
         String ETStr = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(ET);
 
-        Connect connectServer = new Connect("server");
+        Connect connectServer = new Connect("server","mysql");
         Connection serverConnection = connectServer.get();
         ResultSet rs;
+
+        List<Neighbor> newNeighbors = new ArrayList<>();
 
         try {
             Statement stmtServer = serverConnection.createStatement();
@@ -190,9 +192,13 @@ public class fineLocalization {
                     }
                 }
                 if(!isStaticDevice){
-                    events.setCount(count);
-                    events.setUserID(neighbors.get(i).mac);
-                    HD.getEvents().add(events);
+                    if(count>=frequencyThreshold){//filter out infrequent devices
+                        events.setCount(count);
+                        events.setUserID(neighbors.get(i).mac);
+                        HD.getEvents().add(events);
+                        HD.addNeighbor(neighbors.get(i).mac);
+                        newNeighbors.add(neighbors.get(i));
+                    }
                 }
             }
             HD.sort();
@@ -200,6 +206,7 @@ public class fineLocalization {
             e.printStackTrace();
         }
         connectServer.close();
+        return newNeighbors;
     }
 
     public List<Neighbor> filterNeighbors(List<Neighbor> neighbors, Interval interval, Metadata metadata){//filter out infrequent users
@@ -394,6 +401,9 @@ public class fineLocalization {
         double numerator = 1.0, denominator = 0.0;
         for(int i=0;i<neighbors.size();i++){
             if(i == target) continue;
+            if(!HD.findNeighbor(neighbors.get(i).mac)){
+                continue;
+            }
             double alpha = alphaD(target,i);
             double conditionP = alphaOverlapRoom(target,i,neighbors,room, metadata);
             if(conditionP == -1.0 || alpha == 0.0) continue; //no common room

@@ -1,0 +1,20 @@
+--Index
+
+File structure of index
+In file:
+#, Wifiap, number of intervals
+(Each interval) st, et, uid, roomlabel, roomconfidence
+
+goal: index for all clean data
+
+What is index: for each ap, store all corresponding intervals
+Each interval store(st, et, uid)
+
+How to use: 1. Use index to find all candidate gaps; count the number;
+            2. Clean;
+
+
+When to build index: when new clean data is generated.
+
+
+--Logic of isContact

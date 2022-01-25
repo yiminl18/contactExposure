@@ -53,5 +53,6 @@
     <orderEntry type="library" name="Maven: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.neo4j:neo4j-jmx:3.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.neo4j:neo4j-consistency-check:3.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.2.8" level="project" />
   </component>
 </module>

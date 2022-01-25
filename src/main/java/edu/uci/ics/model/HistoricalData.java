@@ -3,6 +3,23 @@ import java.util.*;
 
 public class HistoricalData {
     List<rawConnectivityEvents> events = new ArrayList<>();
+    Map<String, Boolean> hm = new HashMap<String, Boolean>();
+
+    public void addNeighbor(String deviceID){
+        if(!hm.containsKey(deviceID)){
+            hm.put(deviceID, true);
+        }
+    }
+
+    public void removeNeighbor(String deviceID){
+        if(hm.containsKey(deviceID)){
+            hm.remove(deviceID);
+        }
+    }
+
+    public boolean findNeighbor(String deviceID){
+        return hm.containsKey(deviceID);
+    }
 
     public List<rawConnectivityEvents> getEvents() {
         return events;

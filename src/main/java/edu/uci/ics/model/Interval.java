@@ -86,4 +86,8 @@ public class Interval {
     public void setEndTimeStamp(Timestamp endTimeStamp) {
         this.endTimeStamp = endTimeStamp;
     }
+
+    public long getTimeLength(){//milliseconds
+        return endTimeStamp.getTime() - startTimeStamp.getTime();
+    }
 }

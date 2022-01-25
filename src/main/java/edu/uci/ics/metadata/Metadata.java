@@ -32,7 +32,7 @@ public class Metadata {
         List<String> aps;
         aps = new ArrayList<>();
         apMapRoom = new HashMap<>();
-        try (Connect connect = new Connect("server")) {
+        try (Connect connect = new Connect("server","mysql")) {
             Connection connection = connect.get();
             Statement st1 = connection.createStatement();
             ResultSet rs1 = st1.executeQuery("select id from SENSOR where sensor_type_id = 1;");
@@ -163,7 +163,7 @@ public class Metadata {
     public List<String> selectAffectedPeople(){
         SQLGenerator sqlGenerator = new SQLGenerator();
         List<String> people = new ArrayList<>();
-        Connect connectServer = new Connect("local");
+        Connect connectServer = new Connect("local","mysql");
         Connection serverConnection = connectServer.get();
         ResultSet rs;
         try{

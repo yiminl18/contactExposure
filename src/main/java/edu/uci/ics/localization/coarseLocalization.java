@@ -19,22 +19,29 @@ public class coarseLocalization {
                 label = interval.getStartAP();
             }
             else{
-                if(user.getVisitedAps().containsKey(interval.getStartAP()) && user.getVisitedAps().containsKey(interval.getEndAP())){
-                    if(user.getVisitedAps().get(interval.getStartAP()) > user.getVisitedAps().get(interval.getEndAP())){
+                //frequentAP exists
+                if(user.getFrequentAP().equals(interval.getStartAP())){
+                    label = interval.getStartAP();
+                }else if(user.getFrequentAP().equals(interval.getEndAP())){
+                    label = interval.getEndAP();
+                }else{
+                    if(user.getVisitedAps().containsKey(interval.getStartAP()) && user.getVisitedAps().containsKey(interval.getEndAP())){
+                        if(user.getVisitedAps().get(interval.getStartAP()) > user.getVisitedAps().get(interval.getEndAP())){
+                            label = interval.getStartAP();
+                        }
+                        else{
+                            label = interval.getEndAP();
+                        }
+                    }
+                    else if(user.getVisitedAps().containsKey(interval.getStartAP())){
                         label = interval.getStartAP();
                     }
-                    else{
+                    else if(user.getVisitedAps().containsKey(interval.getEndAP())){
                         label = interval.getEndAP();
                     }
-                }
-                else if(user.getVisitedAps().containsKey(interval.getStartAP())){
-                    label = interval.getStartAP();
-                }
-                else if(user.getVisitedAps().containsKey(interval.getEndAP())){
-                    label = interval.getEndAP();
-                }
-                else{
-                    label = interval.getStartAP();
+                    else{
+                        label = interval.getStartAP();
+                    }
                 }
             }
         }

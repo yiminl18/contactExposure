@@ -39,6 +39,11 @@
             <artifactId>neo4j</artifactId>
             <version>3.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.8</version>
+        </dependency>
 
 
     </dependencies>

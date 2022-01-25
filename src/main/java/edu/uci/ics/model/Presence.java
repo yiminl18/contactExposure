@@ -7,8 +7,9 @@ import java.util.List;
 public class Presence {
     String userID;//mac or userID
     List<Interval> presence = new ArrayList<>();
-    HashMap<String, Integer> visitedAps;
+    HashMap<String, Integer> visitedAps;//ap to count
     int count;
+    long duration = 0;
 
     public int getCount() {
         return count;
@@ -44,5 +45,15 @@ public class Presence {
 
     public void setVisitedAps(HashMap<String, Integer> visitedAps){
         this.visitedAps = visitedAps;
+    }
+
+    public void setDuration(){
+        for(int i = 0;i<presence.size();i++){
+            duration += presence.get(i).getTimeLength();
+        }
+    }
+
+    public long getDuration(){
+        return this.duration;
     }
 }

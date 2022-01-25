@@ -1,7 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="54b36014-110c-4a3d-9603-0758d8b802c7" name="Default Changelist" comment="" />
+    <list default="true" id="54b36014-110c-4a3d-9603-0758d8b802c7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_2_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Truth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trajectories1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/truths.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YimingLin.txt.rtf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contactTracing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/contactTracing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/credential.txt" beforeDir="false" afterPath="$PROJECT_DIR$/credential.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neighbors.txt" beforeDir="false" afterPath="$PROJECT_DIR$/neighbors.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/contactTracing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/contactTracing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/visualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/visualization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/Connect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/Connect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/Trajectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/Trajectory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/coarseLocalization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/coarseLocalization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/fineLocalization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/fineLocalization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/metadata/Metadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/metadata/Metadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/metadata/SQLGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/metadata/SQLGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/HistoricalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/HistoricalData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Interval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Interval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Presence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Presence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/contactTracing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/contactTracing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/visualization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/visualization.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/Connect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/Connect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/coarseLocalization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/coarseLocalization.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization$Neighbor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization$Neighbor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization$sortList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization$sortList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/metadata/Metadata.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/metadata/Metadata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/metadata/SQLGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/metadata/SQLGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/HistoricalData$sortList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/HistoricalData$sortList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/HistoricalData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/HistoricalData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Interval.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Interval.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Presence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Presence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/User.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,20 +75,17 @@
       </list>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1nxmrS0VAxtZ20cAMFzrplCNC4W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -85,6 +129,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -110,125 +155,25 @@
       <workItem from="1620597585060" duration="620000" />
       <workItem from="1620599316112" duration="3064000" />
       <workItem from="1622075812154" duration="1591000" />
+      <workItem from="1642631048177" duration="1039000" />
+      <workItem from="1642705888830" duration="3577000" />
+      <workItem from="1642731469032" duration="24000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="320" y="115" key="#Project_Structure" timestamp="1612376659567">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="320" y="115" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1612376659566" />
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612426662716">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1612426662716" />
-    <state x="427" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614227116426">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="427" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1614227116426" />
-    <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser" timestamp="1614584334125">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1614584334125" />
-    <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1612376066672">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1612376066672" />
-    <state x="334" y="146" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1614704166606">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="334" y="146" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1440.900@0.0.1440.900" timestamp="1614704166606" />
-    <state x="486" y="342" width="467" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1614229793963">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="486" y="342" width="467" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1440.900@0.0.1440.900" timestamp="1614229793963" />
-    <state x="482" y="50" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1612405353169">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="482" y="50" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1612405353169" />
-    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1614758473937">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1614758473937" />
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1614758929566">
-      <screen x="52" y="23" width="1388" height="877" />
-    </state>
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/52.23.1388.877@52.23.1388.877" timestamp="1614758929566" />
-    <state width="1334" height="251" key="GridCell.Tab.0.bottom" timestamp="1620672934039">
-      <screen x="64" y="23" width="1376" height="877" />
-    </state>
-    <state width="1398" height="251" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1616186769189" />
-    <state width="1348" height="198" key="GridCell.Tab.0.bottom/48.23.1392.877@48.23.1392.877" timestamp="1615272207362" />
-    <state width="1348" height="198" key="GridCell.Tab.0.bottom/52.23.1388.877@52.23.1388.877" timestamp="1615270949175" />
-    <state width="1398" height="199" key="GridCell.Tab.0.bottom/60.23.1380.877@60.23.1380.877" timestamp="1614495039863" />
-    <state width="1398" height="198" key="GridCell.Tab.0.bottom/62.23.1378.877@62.23.1378.877" timestamp="1614885327330" />
-    <state width="1334" height="251" key="GridCell.Tab.0.bottom/64.23.1376.877@64.23.1376.877" timestamp="1620672934039" />
-    <state width="1334" height="251" key="GridCell.Tab.0.center" timestamp="1620672934038">
-      <screen x="64" y="23" width="1376" height="877" />
-    </state>
-    <state width="1398" height="251" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1616186769187" />
-    <state width="1348" height="198" key="GridCell.Tab.0.center/48.23.1392.877@48.23.1392.877" timestamp="1615272207361" />
-    <state width="1348" height="198" key="GridCell.Tab.0.center/52.23.1388.877@52.23.1388.877" timestamp="1615270949174" />
-    <state width="1398" height="199" key="GridCell.Tab.0.center/60.23.1380.877@60.23.1380.877" timestamp="1614495039862" />
-    <state width="1398" height="198" key="GridCell.Tab.0.center/62.23.1378.877@62.23.1378.877" timestamp="1614885327329" />
-    <state width="1334" height="251" key="GridCell.Tab.0.center/64.23.1376.877@64.23.1376.877" timestamp="1620672934038" />
-    <state width="1334" height="251" key="GridCell.Tab.0.left" timestamp="1620672934037">
-      <screen x="64" y="23" width="1376" height="877" />
-    </state>
-    <state width="1398" height="251" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1616186769186" />
-    <state width="1348" height="198" key="GridCell.Tab.0.left/48.23.1392.877@48.23.1392.877" timestamp="1615272207361" />
-    <state width="1348" height="198" key="GridCell.Tab.0.left/52.23.1388.877@52.23.1388.877" timestamp="1615270949173" />
-    <state width="1398" height="199" key="GridCell.Tab.0.left/60.23.1380.877@60.23.1380.877" timestamp="1614495039861" />
-    <state width="1398" height="198" key="GridCell.Tab.0.left/62.23.1378.877@62.23.1378.877" timestamp="1614885327328" />
-    <state width="1334" height="251" key="GridCell.Tab.0.left/64.23.1376.877@64.23.1376.877" timestamp="1620672934037" />
-    <state width="1334" height="251" key="GridCell.Tab.0.right" timestamp="1620672934039">
-      <screen x="64" y="23" width="1376" height="877" />
-    </state>
-    <state width="1398" height="251" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1616186769188" />
-    <state width="1348" height="198" key="GridCell.Tab.0.right/48.23.1392.877@48.23.1392.877" timestamp="1615272207361" />
-    <state width="1348" height="198" key="GridCell.Tab.0.right/52.23.1388.877@52.23.1388.877" timestamp="1615270949174" />
-    <state width="1398" height="199" key="GridCell.Tab.0.right/60.23.1380.877@60.23.1380.877" timestamp="1614495039862" />
-    <state width="1398" height="198" key="GridCell.Tab.0.right/62.23.1378.877@62.23.1378.877" timestamp="1614885327329" />
-    <state width="1334" height="251" key="GridCell.Tab.0.right/64.23.1376.877@64.23.1376.877" timestamp="1620672934039" />
-    <state width="1398" height="303" key="GridCell.Tab.1.bottom" timestamp="1614817543616">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="303" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1614817543616" />
-    <state width="1398" height="303" key="GridCell.Tab.1.center" timestamp="1614817543614">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="303" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1614817543614" />
-    <state width="1398" height="303" key="GridCell.Tab.1.left" timestamp="1614817543614">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="303" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1614817543614" />
-    <state width="1398" height="303" key="GridCell.Tab.1.right" timestamp="1614817543615">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="303" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1614817543615" />
-    <state x="332" y="151" key="NewModule_or_Project.wizard" timestamp="1614706573398">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="332" y="151" key="NewModule_or_Project.wizard/0.0.1440.900@0.0.1440.900" timestamp="1614706573398" />
-    <state x="108" y="63" key="SettingsEditor" timestamp="1620599390336">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="108" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1620599390336" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1614758868757">
-      <screen x="52" y="23" width="1388" height="877" />
-    </state>
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/52.23.1388.877@52.23.1388.877" timestamp="1614758868757" />
-    <state x="68" y="63" key="new project wizard" timestamp="1616088755672">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="68" y="63" key="new project wizard/0.0.1440.900@0.0.1440.900" timestamp="1616088755672" />
-    <state x="129" y="84" key="new project wizard/64.23.1376.877@64.23.1376.877" timestamp="1616088457000" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1614577973377">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1614577973377" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
