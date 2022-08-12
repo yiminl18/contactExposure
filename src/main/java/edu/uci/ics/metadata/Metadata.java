@@ -104,7 +104,7 @@ public class Metadata {
                 identity.setName(data[0]);
                 identity.setEmail(data[1]);
                 identity.setMac(data[2]);
-                identity.setOffice(data[3]);
+                identity.setOffice(data[3]);//ihe2: create a hash table from mac to office
                 this.identities.put(identity.getMac(),identity);
             }
             csvReader.close();
@@ -125,7 +125,7 @@ public class Metadata {
                 String[] data = row.split(",");
                 Room room = new Room();
                 room.setRoom(data[0]);
-                room.setImportance(Integer.valueOf(data[1]));
+                room.setImportance(Integer.valueOf(data[1]));//lower, more important
                 room.setRoomType(data[2]);
                 rooms.add(room);
                 this.roomMap.put(room.getRoom(),room);

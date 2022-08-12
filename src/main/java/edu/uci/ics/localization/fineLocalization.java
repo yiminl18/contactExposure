@@ -65,6 +65,32 @@ public class fineLocalization {
         }
     }
 
+    public String quick_room_localization(Interval interval, Metadata metadata){
+        List<String> candidateRooms = metadata.getAPCoverage(interval.getRegionLabel());
+        String mac = interval.getDeviceID();
+        String office = metadata.getIdentity(mac).getOffice();
+        int weight  = 100;
+        String target = "";
+        //System.out.println(interval.getRegionLabel());
+        if(interval.getRegionLabel().equals("out")){
+            return "out";
+        }
+        for(int i=0;i< candidateRooms.size();i++){
+            String room = candidateRooms.get(i);
+            if(room.equals(office)){
+                return office;
+            }
+            if(metadata.getRoom(room).getImportance() < weight) {
+                weight = metadata.getRoom(room).getImportance();
+                target = room;
+            }
+        }
+        if(target == ""){
+            target = candidateRooms.get(0);
+        }
+        return target;
+    }
+
     public void sortNeighbor(List<Neighbor> neighbors){
         Collections.sort(neighbors, new fineLocalization.sortList());
     }

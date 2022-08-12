@@ -5,49 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54b36014-110c-4a3d-9603-0758d8b802c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_2_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Truth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trajectories1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/truths.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_13_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_17_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_17_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_60.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_60.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_60.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_36.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_32.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_6_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_6_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_6_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_6_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_6_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_6_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_6_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_3_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_3_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_3_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_3_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_3_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_3_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_3_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_3_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_29.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/messager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YimingLin.txt.rtf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/contactTracing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/contactTracing.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/credential.txt" beforeDir="false" afterPath="$PROJECT_DIR$/credential.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neighbors.txt" beforeDir="false" afterPath="$PROJECT_DIR$/neighbors.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/contactTracing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/contactTracing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/visualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/contact/visualization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/Connect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/Connect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/Trajectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/Trajectory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/coarseLocalization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/coarseLocalization.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/fineLocalization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/localization/fineLocalization.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/metadata/Metadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/metadata/Metadata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/metadata/SQLGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/metadata/SQLGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/HistoricalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/HistoricalData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Interval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Interval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Presence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Presence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/contactTracing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/contactTracing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Identity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/model/Identity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/index.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/index.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/visualization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/contact/visualization.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/Connect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/Connect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/coarseLocalization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/coarseLocalization.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization$Neighbor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization$Neighbor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization$sortList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization$sortList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/Trajectory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/Trajectory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/localization/fineLocalization.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/metadata/Metadata.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/metadata/Metadata.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/metadata/SQLGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/metadata/SQLGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/HistoricalData$sortList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/HistoricalData$sortList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/HistoricalData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/HistoricalData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Interval.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Interval.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Presence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Presence.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Affinity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Affinity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/ContactPerson.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/ContactPerson.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Identity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Identity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Index.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Index.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/IndexNode$sortList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/IndexNode$sortList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/IndexNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/IndexNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/NeighborSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/NeighborSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/NeighborUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/NeighborUnit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Query.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Query.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/rawConnectivityEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/rawConnectivityEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/rawConnectivityEvents.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/uci/ics/model/rawConnectivityEvents.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,18 +104,20 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.43448275" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Trajectory">
     <configuration name="HelloWorldExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.uci.ics.contact.HelloWorldExample" />
       <module name="contactTracing" />
@@ -122,8 +140,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Trajectory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.uci.ics.localization.Trajectory" />
+      <module name="contactTracing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.uci.ics.localization.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.uci.ics.localization.main" />
+      <module name="contactTracing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.uci.ics.localization.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Trajectory" />
+        <item itemvalue="Application.main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HelloWorldExample" />
       </list>
@@ -158,6 +204,19 @@
       <workItem from="1642631048177" duration="1039000" />
       <workItem from="1642705888830" duration="3577000" />
       <workItem from="1642731469032" duration="24000" />
+      <workItem from="1643135191886" duration="1588000" />
+      <workItem from="1643691770909" duration="1214000" />
+      <workItem from="1645731148826" duration="599000" />
+      <workItem from="1645919400475" duration="599000" />
+      <workItem from="1645939953758" duration="1000" />
+      <workItem from="1649696862771" duration="3984000" />
+      <workItem from="1654716635423" duration="2046000" />
+      <workItem from="1654815569434" duration="1198000" />
+      <workItem from="1654903695468" duration="21000" />
+      <workItem from="1654903731418" duration="20000" />
+      <workItem from="1660190647102" duration="935000" />
+      <workItem from="1660263534566" duration="5698000" />
+      <workItem from="1660270953875" duration="377000" />
     </task>
     <servers />
   </component>

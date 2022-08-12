@@ -5,19 +5,21 @@ import edu.uci.ics.contact.visualization;
 import edu.uci.ics.metadata.Metadata;
 import edu.uci.ics.metadata.SQLGenerator;
 import edu.uci.ics.model.*;
+import org.neo4j.register.Register;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.io.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
-import java.util.Date;
+import java.util.Formatter;
+import java.util.Map;
 
 /*
     This class generates trajectories only coarse granularity, on for only frequent devices.
@@ -26,11 +28,10 @@ import java.util.Date;
 public class Trajectory {
     private static long gapT = 10;
     private static Metadata metadata = new Metadata();
-    private static final String startDate = "2018-01-08 00:00:00";
-    private static final String endDate = "2018-02-10 00:00:00";
+    private static final String startDate = "2017-08-28 16:10:09";//2017-08-28 16:10:09
+    private static final String endDate = "2019-05-20 12:00:53";//2019-05-20 12:00:53
 
     static List<String> frequentUsers = new ArrayList<>();
-    static List<Truth> truths = new ArrayList<>();
 
     public static void loadMetadata(){
         metadata.loadIdentityMetadata();
@@ -38,105 +39,42 @@ public class Trajectory {
         metadata.loadSpaceMetadata();
     }
 
-    public static String getClock(String day, int id) {// get the time point for one day, 6*12, starts from 08:00 AM, id
-        // from 0
-        java.util.Date clock = new java.util.Date();
-        SimpleDateFormat dataformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        try {
-            clock = dataformat.parse(day);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(clock);
-        calendar.add(Calendar.MINUTE, id);
-        Date m = calendar.getTime();
-        String minute = dataformat.format(m);
-
-        return minute;
-    }
-
-
-
-    public static Presence getNewTrajectory(Query query, int limit){
-        NeighborSet candidateIntervals = new NeighborSet();
-        candidateIntervals.setNeighborSet(candidateIntervals.readNeighborSet());
-        Presence presence = RawToPresence(query, readRawEvents(query));
-        Presence newPresence = new Presence();
-        List<Interval> intervals = new ArrayList<>();
-        User user = new User();
-        user.setUserID(query.getUserID());
-        user.setVisitedAps(presence.getVisitedAPs());
-        //System.out.println("Report Query: " + query.getUserID() + " From: " + query.getStartTime() + " To: " + query.getEndTime());
-
-        /*int i = 212;
-
-        coarseLocalization CL = new coarseLocalization();
-        fineLocalization FL = new fineLocalization();
-        String label = CL.coarseLocalization(presence.getPresence().get(i),user);
-        presence.getPresence().get(i).setRegionLabel(label);
-        presence.getPresence().set(i, FL.fineLocalization(presence.getPresence().get(i),metadata));
-        UpdateCandidateIntervals(query, presence.getPresence().get(i).getNeighbors(),candidateIntervals);*/
-
-        int count = 0;
-        for(int i=0;i<presence.getPresence().size();i++){
-            //if(i!=50) continue;
-            System.out.println(i);
-            /*if(count%100 ==0 && count !=0){
-                System.out.println(count);
-            }*/
-            coarseLocalization CL = new coarseLocalization();
-            fineLocalization FL = new fineLocalization();
-
-            String label = CL.coarseLocalization(presence.getPresence().get(i),user);
-            presence.getPresence().get(i).setRegionLabel(label);
-            if(label.equals("out") || label.substring(label.length()-4).equals("1100")){
-                continue;
-                //presence.getPresence().get(i).setRoomLabel("out");
-            }
-            else{
-                count ++;
-                presence.getPresence().set(i, FL.fineLocalization(presence.getPresence().get(i),metadata));
-                intervals.add(presence.getPresence().get(i));
-                //update candidate intervals
-                //UpdateCandidateIntervals(query, presence.getPresence().get(i).getNeighbors(),candidateIntervals);
-                if(count >= limit){
-                    break;
-                }
-            }
-            //System.out.println(presence.getPresence().get(i).getStartTimeStamp() + " " + presence.getPresence().get(i).getEndTimeStamp() + " " + presence.getPresence().get(i).getRegionLabel() + " " +  presence.getPresence().get(i).getRoomLabel());
-        }
-        newPresence.setPresence(intervals);
-        newPresence.setUserID(presence.getUserID());
-
-        return newPresence;
-    }
-
     public static Presence getTrajectory(Query query){
         NeighborSet candidateIntervals = new NeighborSet();
         candidateIntervals.setNeighborSet(candidateIntervals.readNeighborSet());
         Presence presence = RawToPresence(query, readRawEvents(query));
+        if(presence.getCount() == 0){//no data
+            return presence;
+        }
         User user = new User();
         user.setUserID(query.getUserID());
         user.setVisitedAps(presence.getVisitedAPs());
         //System.out.println("Report Query: " + query.getUserID() + " From: " + query.getStartTime() + " To: " + query.getEndTime());
 
-        int count = 0;
         for(int i=0;i<presence.getPresence().size();i++){
             coarseLocalization CL = new coarseLocalization();
             fineLocalization FL = new fineLocalization();
 
             String label = CL.coarseLocalization(presence.getPresence().get(i),user);
             presence.getPresence().get(i).setRegionLabel(label);
-            if(label.equals("out")){
+
+            Interval interval = presence.getPresence().get(i);
+            try {
+                String room = FL.quick_room_localization(interval, metadata);
+                presence.getPresence().get(i).setRoomLabel(room);
+            } catch (Exception e) {
+                throw e;
+            }
+
+            /*if(label.equals("out")){
                 presence.getPresence().get(i).setRoomLabel("out");
             }
             else{
                 presence.getPresence().set(i, FL.fineLocalization(presence.getPresence().get(i),metadata));
                 //update candidate intervals
                 UpdateCandidateIntervals(query, presence.getPresence().get(i).getNeighbors(),candidateIntervals);
-            }
-            //System.out.println(presence.getPresence().get(i).getStartTimeStamp() + " " + presence.getPresence().get(i).getEndTimeStamp() + " " + presence.getPresence().get(i).getRegionLabel() + " " +  presence.getPresence().get(i).getRoomLabel());
+            }*/
+            //System.out.println(presence.getPresence().get(i).getStartTimeStamp() + " " + presence.getPresence().get(i).getEndTimeStamp() + " " + presence.getPresence().get(i).getRegionLabel());
         }
         return presence;
     }
@@ -176,7 +114,7 @@ public class Trajectory {
         SQLGenerator sqlGenerator = new SQLGenerator();
         rawConnectivityEvents events = new rawConnectivityEvents();
 
-        Connect connectServer = new Connect("server","mysql");
+        Connect connectServer = new Connect("server", "mysql");
         Connection serverConnection = connectServer.get();
         ResultSet rs;
 
@@ -195,6 +133,7 @@ public class Trajectory {
             e.printStackTrace();
         }
         connectServer.close();
+        //System.out.println(events.getCount());
         return events;
     }
 
@@ -274,114 +213,13 @@ public class Trajectory {
     }
 
     public static void printTrajectories(Presence presence){
-        System.out.println("USER: "+ presence.getUserID());
+        //System.out.println("USER: "+ presence.getUserID());
         for(int i=0;i<presence.getPresence().size();i++){
-            System.out.println(presence.getPresence().get(i).getDeviceID() + " " +  presence.getPresence().get(i).getStartTimeStamp() + " " + presence.getPresence().get(i).getEndTimeStamp() + " " + presence.getPresence().get(i).getRegionLabel());
+            System.out.println(presence.getPresence().get(i).getDeviceID() + " " +  presence.getPresence().get(i).getStartTimeStamp() + " " + presence.getPresence().get(i).getEndTimeStamp() + " " + presence.getPresence().get(i).getRegionLabel() + " "+ presence.getPresence().get(i).getRoomLabel());
         }
     }
 
-    public static List<Truth> TrajectoriesToTruth(Presence presence, int limit){
-        int id = 0, i = 0;
-        String timeStamp = getClock(startDate,id);
-        Timestamp ts = Timestamp.valueOf(timeStamp);
-        int size = presence.getPresence().size();
-        String deviceID = presence.getUserID();
-        List<Truth> truths = new ArrayList<>();
-        while(id <= limit){
-
-            while(i < size){
-                Timestamp st = presence.getPresence().get(i).getStartTimeStamp();
-                Timestamp et = presence.getPresence().get(i).getEndTimeStamp();
-                String region = presence.getPresence().get(i).getRegionLabel();
-                if(region == "out" ||  region.substring(region.length()-4).equals("1100")){
-                    i++;
-                    continue;
-                }
-                String room = presence.getPresence().get(i).getRoomLabel();
-                if(ts.compareTo(st)>=0 && ts.compareTo(et) <0){
-                    Truth truth = new Truth();
-                    truth.setTimestamp(ts);
-                    truth.setRegion(region);
-                    truth.setDeviceID(deviceID);
-                    truth.setAps(metadata.getAPCoverage(region));
-                    truth.setRoom(room);
-                    truths.add(truth);
-                    id ++;
-                    ts = addMinute(ts,5);
-                    break;
-                }
-                else if(ts.compareTo(st) < 0){
-                    ts = addMinute(ts,5);
-                }
-                else if(ts.compareTo(et) >= 0){
-                    i++;
-                }
-            }
-            if(i>=size){
-                break;
-            }
-        }
-        return truths;
-    }
-
-    public static Timestamp addMinute(Timestamp now, int minute){
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(now.getTime());
-        cal.add(Calendar.MINUTE, minute);
-        return new Timestamp(cal.getTime().getTime());
-    }
-
-    public static void test(){
-        Date clock = new Date();
-        SimpleDateFormat dataformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String day = "2020-08-01 12:00:00";
-        try {
-            clock = dataformat.parse(day);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Timestamp now = new Timestamp(clock.getTime());
-        System.out.println(now.toString());
-
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(now.getTime());
-
-        // add 30 seconds
-        cal.add(Calendar.MINUTE, 5);
-        now = new Timestamp(cal.getTime().getTime());
-        System.out.println(now);
-
-    }
-
-    public static void writeTruth(List<Truth> truths){
-        try {
-            FileWriter filePath = new FileWriter("truths.txt",true);
-            BufferedWriter bw = new BufferedWriter(filePath);
-            for(int i=0;i<truths.size();i++){
-                bw.write(truths.get(i).getDeviceID());
-                bw.newLine();
-                bw.write(truths.get(i).getTimestamp().toString());
-                bw.newLine();
-                bw.write(truths.get(i).getRegion());
-                bw.write(" ");
-                bw.write(truths.get(i).getRoom());
-                bw.newLine();
-                String aps = "";
-                for(int j=0;j<truths.get(i).getAps().size();j++){
-                    String ap = truths.get(i).getAps().get(j);
-                    aps = aps + ap + " ";
-                }
-                bw.write(aps);
-                bw.newLine();
-            }
-            bw.flush();
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void readFrequentUsers(){
+    public static void readFrequentUsers(){//mac address
         try {
             BufferedReader csvReader = new BufferedReader(new FileReader("frequentUsers.csv"));
             String row;
@@ -392,6 +230,7 @@ public class Trajectory {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //change to read all mac from db
     }
 
     public static void writeToDisk(Presence presence){
@@ -417,34 +256,105 @@ public class Trajectory {
 
     }
 
+    public static List<String> read_mac_from_db(){
+        SQLGenerator sqlGenerator = new SQLGenerator();
+        rawConnectivityEvents events = new rawConnectivityEvents();
+
+        Connect connectServer = new Connect("server", "mysql");
+        Connection serverConnection = connectServer.get();
+        ResultSet rs;
+
+        List<String> macs = new ArrayList<>();
+
+        //read raw connectivity data
+        try {
+            Statement stmtServer = serverConnection.createStatement();
+//            String sql = "select distinct id from SENSOR\n" +
+//                    "where sensor_type_id = 3";
+            String sql = "select distinct payload from OBSERVATION_CLEAN";
+            rs = stmtServer.executeQuery(sql);
+            events.initEvents();
+            while (rs.next()) {
+                String mac = rs.getString(1);
+                macs.add(mac);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        connectServer.close();
+        return macs;
+    }
+
+    public static HashMap<String, String> get_user_mac_map(){
+        HashMap<String, String> user_maps = new HashMap<>();
+        rawConnectivityEvents events = new rawConnectivityEvents();
+
+        Connect connectServer = new Connect("server", "mysql");
+        Connection serverConnection = connectServer.get();
+        ResultSet rs;
+
+        //read raw connectivity data
+        try {
+            Statement stmtServer = serverConnection.createStatement();
+            String sql = "select id, USER_ID from SENSOR\n" +
+                    "where sensor_type_id = 3";
+            rs = stmtServer.executeQuery(sql);
+            events.initEvents();
+            while (rs.next()) {
+                String mac = rs.getString(1);
+                String user = rs.getString(2);
+                user_maps.put(mac, user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        connectServer.close();
+        return user_maps;
+    }
+
+    public static void insert_trajectory(String macAddress, String userId, String startTimestamp, String endTimestamp, String room){
+        String sql = String.format("INSERT INTO FULL_PRESENCE (macAddress, userId, startTimestamp, endTimestamp, location)\n" +
+                "VALUES ('%s', '%s', '%s', '%s', '%s');", macAddress,userId,startTimestamp,endTimestamp,room);
+        //System.out.println(sql);
+        Connect connectServer = new Connect("server", "mysql");
+        Connection serverConnection = connectServer.get();
+        try {
+            Statement stmtServer = serverConnection.createStatement();
+            stmtServer.executeUpdate(sql);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        connectServer.close();
+    }
+
     public static void main(String[] args) {
-        readFrequentUsers();
+        //readFrequentUsers();
         loadMetadata();
-        int limit = 1000;
-        int count = 0;
-        int sum = 10000;
-        for(int i=0;i<frequentUsers.size();i++){
-            /*if(!frequentUsers.get(i).equals("05712c740261cf1236e329feb4fa70e481debe17")){
-                continue;
-            }*/
+        List<String> macs = read_mac_from_db();
+        HashMap<String, String> user_maps = get_user_mac_map();
+
+        for(int i=0;i<macs.size();i++){
             Query query = new Query();
-            query.setUserID(frequentUsers.get(i));
+            query.setUserID(macs.get(i));
             query.setStartTime(startDate);
             query.setEndTime(endDate);
-            System.out.println(frequentUsers.get(i));
-            List<Truth> truths = TrajectoriesToTruth(getNewTrajectory(query,limit),limit);
-            writeTruth(truths);
-            count += limit;
-            if(count >= sum){
-                break;
-            }
-            /*for(int j=0;j<truths.size();j++){
-                System.out.println(truths.get(j).getRegion()+ " " + truths.get(j).getTimestamp() + " " + truths.get(j).getRoom());
-                for(int k=0;k<truths.get(j).getAps().size();k++){
-                    System.out.print(truths.get(j).getAps().get(k) + " ");
+            //getTrajectory(query);
+            System.out.println(i + " " + macs.size());
+            Presence presence = getTrajectory(query);
+            System.out.println("size: " + presence.getPresence().size());
+            for(int j=0;j<presence.getPresence().size();j++){
+                String mac = presence.getPresence().get(j).getDeviceID();
+                String st = presence.getPresence().get(j).getStartTimeStamp().toString();
+                String et = presence.getPresence().get(j).getEndTimeStamp().toString();
+                String room = presence.getPresence().get(j).getRoomLabel();
+                String user = "null";
+                if(user_maps.containsKey(mac)){
+                    user = user_maps.get(mac);
                 }
-                System.out.println("");
-            }*/
+                //System.out.println(mac + " " + st + " " + et + " " + room + " " + user);
+                insert_trajectory(mac,user,st,et,room);
+            }
+            //writeToDisk(getTrajectory(query));
         }
     }
 }

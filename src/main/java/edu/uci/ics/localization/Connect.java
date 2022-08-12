@@ -34,9 +34,9 @@ public class Connect implements AutoCloseable {
                             "jdbc:mysql://localhost:3306/Contact?useSSL=false&serverTimezone=PST", userLocal,
                             pwdLocal);
                 }
-                if(type.equals("server")){
+                if(type.equals("server")){//&serverTimezone=PST
                     connection = DriverManager.getConnection(
-                            "jdbc:mysql://sensoria-mysql.ics.uci.edu:3306/tippersdb_restored?useSSL=false&serverTimezone=PST",
+                            "jdbc:mysql://sensoria-mysql.ics.uci.edu:3306/tippersdb_restored?useSSL=false",
                             userServer, pwdServer);
                 }
             } catch (SQLException e) {

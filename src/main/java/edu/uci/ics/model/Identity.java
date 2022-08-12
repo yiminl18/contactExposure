@@ -1,10 +1,10 @@
 package edu.uci.ics.model;
 
 public class Identity {//user metadata
-    String office;
-    String name;
-    String email;
-    String mac;
+    String office = "null";
+    String name = "null";
+    String email = "null";
+    String mac = "null";
 
     public String getOffice() {
         return office;
